@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingWebAPI.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//"=>": means "Tal que"
+builder.Services.AddDbContext<DataBaseContext>(o =>
+{
+    //Creating a dependency for a sql-kind database
+    o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 
