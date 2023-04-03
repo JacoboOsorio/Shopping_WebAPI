@@ -16,7 +16,7 @@ namespace ShoppingWebAPI.DAL
         }
 
         //Naming the table for the database
-        private DbSet<Country> Countries { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         //Creating an index to control duplicated data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
